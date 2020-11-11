@@ -9,7 +9,6 @@ import (
 	"encoding/pem"
 	"fmt"
 	"io"
-	"log"
 	"math/big"
 
 	quic "github.com/lucas-clemente/quic-go"
@@ -22,12 +21,15 @@ const message = "foobar"
 // We start a server echoing data on the first stream the client opens,
 // then connect with a client, send the message, and wait for its receipt.
 func main() {
-	go func() { log.Fatal(echoServer()) }()
+	// JoeL
+	echoServer()
 
-	err := clientMain()
-	if err != nil {
-		panic(err)
-	}
+	//go func() { log.Fatal(echoServer()) }()
+	//
+	//err := clientMain()
+	//if err != nil {
+	//	panic(err)
+	//}
 }
 
 // Start a server that echos all data on the first stream opened by the client
